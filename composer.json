@@ -1,0 +1,17 @@
+{
+    "name": "stm555/tdd",
+    "description": "Test Driven Dungeons: An intro to Test Driven Development via dungeon crawling",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Seth Thornberry",
+            "email": "stm555@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "stm555\\tdd\\":  "src/" }
+    },
+    "require": {
+        "phpunit/phpunit": "^7.4"
+    }
+}
