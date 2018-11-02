@@ -2,24 +2,22 @@
 
 namespace stm555\tdd;
 
+use stm555\tdd\Dungeon\Explorable;
+
 /**
  * A single unit that can interact with a Dungeon
  */
 Interface Unit
 {
     /**
-     * Examine the current location
+     * Take turn (typically some combination of perceive, act & move)
      */
-    public function perceive();
+    public function takeTurn();
 
     /**
-     * Act on the current location
+     * Provides the current location of the Unit
+     * @return Explorable
      */
-    public function act();
-
-    /**
-     * Move to the next location
-     */
-    public function move();
+    public function currentLocation() : Explorable;
 
 }

@@ -5,6 +5,7 @@ namespace stm555\tdd;
 use PHPUnit\Framework\TestCase;
 use stm555\tdd\Dungeon\{Explorable, Room};
 
+
 abstract class Dungeon extends TestCase
 {
     const START = 'outside';
@@ -51,11 +52,8 @@ abstract class Dungeon extends TestCase
      */
     public function testEnterTheDungeon()
     {
-        foreach ($this->theParty as $unit) {
-            $unit->perceive();
-            $unit->act();
-            $unit->move();
-        }
+        //First Turn
+        array_walk($this->theParty, function (Unit $unit) { $unit->takeTurn(); });
 
         foreach ($this->theParty as $unit) {
             $this->assertSame($this->map[self::END], $unit->currentLocation(), "This Unit did not make it inside");
@@ -67,22 +65,13 @@ abstract class Dungeon extends TestCase
      */
     public function testExitTheDungeon()
     {
-        foreach ($this->theParty as $unit) {
-            $unit->perceive();
-            $unit->act();
-            $unit->move();
-        }
+        //take first turn for all units
+        array_walk($this->theParty, function (Unit $unit) { $unit->takeTurn(); });
         //Take a second turn
-        foreach ($this->theParty as $unit) {
-            $unit->perceive();
-            $unit->act();
-            $unit->move();
-        }
+        array_walk($this->theParty, function (Unit $unit) { $unit->takeTurn(); });
 
         foreach ($this->theParty as $unit) {
             $this->assertSame($this->map[self::START], $unit->currentLocation(), "This Unit did not make it back outside");
         }
     }
-
-
 }

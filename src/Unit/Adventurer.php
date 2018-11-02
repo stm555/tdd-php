@@ -19,7 +19,7 @@ class Adventurer implements Unit
     /**
      * Observe context
      */
-    public function perceive()
+    protected function perceive()
     {
         $this->exits = $this->currentLocation()->findExits($this);
     }
@@ -27,7 +27,7 @@ class Adventurer implements Unit
     /**
      * Decision Engine for what to do
      */
-    public function act()
+    protected function act()
     {
         // TODO: Implement act() method.
     }
@@ -36,7 +36,7 @@ class Adventurer implements Unit
      * Decision Engine for where to move
      * @throws \Exception
      */
-    public function move()
+    protected function move()
     {
         foreach($this->exits as $exit) {
             //we take the first exit out
@@ -44,5 +44,16 @@ class Adventurer implements Unit
             return;
         }
         throw new \Exception("No Available Exit!");
+    }
+
+    /**
+     * Take turn (typically some combination of perceive, act & move)
+     * @throws \Exception
+     */
+    public function takeTurn()
+    {
+        $this->perceive();
+        $this->act();
+        $this->move();
     }
 }

@@ -4,6 +4,10 @@ namespace stm555\tdd\Unit;
 
 use stm555\tdd\Dungeon\Explorable;
 
+/**
+ * Trait LocationAware
+ * Adds a location state and provides interaction with that location
+ */
 trait LocationAware
 {
     /**
