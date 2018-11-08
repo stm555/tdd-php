@@ -8,6 +8,7 @@
             "email": "stm555@hotmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": { "stm555\\tdd\\":  "src/" }
     },
